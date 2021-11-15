@@ -59,6 +59,7 @@ class AlbumCollection:
                     f.write('{},{},{},c\n'.format(album.title, album.artist, album.year))
                 else:
                     f.write('{},{},{},r\n'.format(album.title, album.artist, album.year))
+
     def add_album(self, album):
         """
         add a single Album object to the albums attribute
@@ -81,3 +82,13 @@ class AlbumCollection:
             self.albums = sorted(self.albums, key=lambda x: (x.is_completed, x.year))
     def get_unvisited_num(self):
         return 1
+
+    def get_album_by_title(self, title):
+        """
+        get the album by title
+        :return: title
+        """
+        for album in self.albums:
+            if album.title == title:
+                return album
+
