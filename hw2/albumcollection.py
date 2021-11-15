@@ -47,3 +47,15 @@ class AlbumCollection:
                     self.albums.append(Album(title, artist, year, False))
                 else:
                     self.albums.append(Album(title, artist, year, True))
+
+    def save(self, file):
+        """
+        save albums (from album list into csv file)
+        :param filename: file name
+        """
+        with open(file, 'w') as f:
+            for album in self.albums:
+                if (album.is_completed):
+                    f.write('{},{},{},c\n'.format(album.title, album.artist, album.year))
+                else:
+                    f.write('{},{},{},r\n'.format(album.title, album.artist, album.year))
